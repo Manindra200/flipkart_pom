@@ -18,7 +18,7 @@ public class Testbase {
 	public Testbase() {
 		try {
 			prop = new Properties();
-			FileInputStream ip = new FileInputStream("C:\\Testing_Engineer\\flipkart_pom\\src\\main\\java\\com\\flipkart\\qa\\config\\config.properties");
+			FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\com\\flipkart\\qa\\config\\config.properties");
 			prop.load(ip);
 		}catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -32,7 +32,7 @@ public class Testbase {
 
 		String browserName = prop.getProperty("browser");
 		if(browserName.equals("chrome")) {
-			System.setProperty("webdriver.chrome.driver", "C:\\Testing_Engineer\\flipkart_pom\\TestData\\drivers\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+ "\\TestData\\drivers\\chromedriver.exe");
 			driver = new ChromeDriver();	
 		}
 		driver.manage().window().maximize();
